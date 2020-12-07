@@ -7,8 +7,10 @@ public class DragShoot : MonoBehaviour
 {
     public float power = 10f;
     public GameObject deathMenu;
+    public GameObject winMenu;
     public Vector2 minPower;
     public Vector2 maxPower;
+    public float strokes = 0;
     
 
     private Rigidbody2D ball;
@@ -17,6 +19,7 @@ public class DragShoot : MonoBehaviour
     private Vector3 startPoint;
     private Vector3 endPoint;
     private bool grounded = false;
+    private RectTransform rt;
 
     private trajectory_render trail;
 
@@ -26,6 +29,7 @@ public class DragShoot : MonoBehaviour
         cam = Camera.main;
         ball = GetComponent<Rigidbody2D>();
         trail = GetComponent<trajectory_render>();
+        rt = winMenu.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -59,6 +63,7 @@ public class DragShoot : MonoBehaviour
                 ball.AddForce(force * power, ForceMode2D.Impulse);
                 trail.EndLine();
                 grounded = false;
+                strokes++;
             }
         }
     }
@@ -72,6 +77,12 @@ public class DragShoot : MonoBehaviour
 
             ball.AddForce(-(vel/2), ForceMode2D.Impulse);
            
+        }
+
+        if (col.gameObject.name == "Goal")
+        {
+            rt.anchoredPosition = Vector3.zero;
+            Destroy(gameObject);
         }
     }
 

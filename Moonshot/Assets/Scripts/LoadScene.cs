@@ -14,4 +14,15 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void LoadNext()
+    {
+        int next = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(next + 1);
+    }
+
+    public void LoadMain()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
