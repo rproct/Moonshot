@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Game_Monitor : MonoBehaviour
 {
-    public Text menu_text;
-    public Text ui_text;
+    public TextMeshProUGUI menu_text;
+    public TextMeshProUGUI ui_text;
     public float strokes;
     public GameObject ball;
     private DragShoot drag;
@@ -21,7 +22,7 @@ public class Game_Monitor : MonoBehaviour
     void Update()
     {
         strokes = drag.strokes;
-
+        
         ui_text.text = strokes.ToString();
         menu_text.text = strokes.ToString();
     }
