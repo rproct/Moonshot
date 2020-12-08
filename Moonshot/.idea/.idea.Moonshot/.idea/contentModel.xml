@@ -15,6 +15,7 @@
           <e p="rotate_test.cs" t="Include" />
           <e p="RotateAni.cs" t="Include" />
           <e p="ScreenAni.cs" t="Include" />
+          <e p="ToggleUI.cs" t="Include" />
           <e p="trajectory_render.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
