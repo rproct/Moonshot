@@ -13,6 +13,7 @@ public class camera_control : MonoBehaviour
     private float speed;
     private float prevSpeed = 0;
     private Camera cam;
+    private bool locked = false;
 
     private float size = 5;
 
@@ -35,7 +36,17 @@ public class camera_control : MonoBehaviour
 
         if (target != null)
         {
-            transform.position = target.transform.position;
+            if (!locked)
+            {
+                if (transform.position != target.transform.position)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, target.transform.position, (60 * Time.deltaTime));
+                }
+                else
+                    locked = true;
+            }
+            else
+                transform.position = target.transform.position;
 
 
             speed = rb2d.velocity.magnitude;
